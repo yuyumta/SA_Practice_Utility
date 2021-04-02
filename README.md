@@ -6,7 +6,7 @@ An asi plugin for San Andreas that helps practice driving lines.
 2. Load the game and enter a vehicle.
 3. Press the tab key. You've now set a 'point'.
 4. Press 1. You've now teleported to the 'point' you've set.
-5. ![Demo](https://www.youtube.com/watch?v=ahcysfi0oMQ)
+5. Demo: https://www.youtube.com/watch?v=ahcysfi0oMQ/
 
 # Install
 1. Download the asi file.
