@@ -9,7 +9,7 @@ An asi plugin for San Andreas that helps practice driving lines.
 5. Demo: https://www.youtube.com/watch?v=ahcysfi0oMQ/
 
 # Install
-1. Download the asi file.
+1. [Download](https://github.com/yuyumta/SA_LinePracticeUtil/releases/download/1.0/LinePracticeUtil.asi) the asi file.
 2. Install an asi loader if needed.
 3. Put the asi file in "<your SA install dir>/plugins/"
 4. Profit.
