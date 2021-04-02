@@ -1,6 +1,9 @@
 # SA_LinePracticeUtil
 An asi plugin for San Andreas that helps practice driving lines.
 
+# Demo
+![Demo](https://www.youtube.com/watch?v=ahcysfi0oMQ)
+
 # How to use
 1. Ensure the plugin is installed.
 2. Load the game and enter a vehicle.
