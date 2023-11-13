@@ -1,7 +1,7 @@
 # SA_LinePracticeUtil
 An asi plugin for San Andreas that helps practice driving lines and such. Giving you the ability to save your heading and velocity on any vehicle, set and restore various in-game attributes, make and load quicksaves, and add permanently parked vehicles to said quicksaves.
 
-Acknowledged bugs:
+Acknowledged bugs (I will fix them, one day):
 1. if you get in a vehicle, and get back out without setting a position, you are still able to teleport back into the vehicle by pressing x. I guess I could say this is intended, but I definitely did not intend this.
 2. if you do the above, I believe you're made immune to falling off bikes. Either that, or your driving/bike skill gets set to infinity.
 
