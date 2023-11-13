@@ -28,4 +28,3 @@ is not dependent on collision, but rather, a small area.
 
 Author/contact info:
 yuyu#7172
-naizuritenshi@gmail.com
