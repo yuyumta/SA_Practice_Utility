@@ -20,6 +20,9 @@
 using namespace plugin;
 using namespace std;
 
+// the reason this exists is cause i dont believe the included plugin-sdk function to generate a parked vehicle has an input for a few essential variables, so i just patch the save file manually
+// if i remember correctly, the value i change is one related to game progression (the same value which determines whether you get a hydra in grove street, for example). by default, its set so
+// none of your parked vehicles show up on a new game
 void SavePatchThing(const char* filename, uint16_t compare_id)
 {
 	ifstream infile(filename, ios::in | ios::out | ios::binary);
