@@ -1,19 +1,18 @@
 # SA_LinePracticeUtil
-An asi plugin for San Andreas that helps practice driving lines and such. Giving you the ability to save your heading and velocity on any vehicle, set and restore various in-game attributes, make and load quicksaves, and add permanently parked vehicles to said quicksaves.
-
-Acknowledged bugs (I will fix them, one day):
-1. if you get in a vehicle, and get back out without setting a position, you are still able to teleport back into the vehicle by pressing x. I guess I could say this is intended, but I definitely did not intend this.
-2. if you do the above, I believe you're made immune to falling off bikes. Either that, or your driving/bike skill gets set to infinity.
-
-# How to use
-1. Ensure the plugin is installed.
-2. Load the game and enter a vehicle.
-3. Press the tab key. You've now set a 'point'.
-4. Press X. You've now teleported to the 'point' you've set.
-5. There are more features as of 4.0 including quicksaves. Read the readme for details.
+An asi plugin for San Andreas that helps practice driving lines and such. Giving you the ability to save your heading and velocity on any vehicle, set and restore various in-game attributes, time different routes using a checkpoint, create and load quicksaves, and also add permanently parked vehicles to said quicksaves.
 
 # Install
-1. [Download](https://github.com/yuyumta/SA_LinePracticeUtil/releases/download/4.0/SA_practice_utility.zip) the asi file.
-2. Install an asi loader if needed.
-3. Extract the contents of the zip to the game's root directory...
-4. Profit.
+1. Install an asi loader.
+2. 1. [Download](https://github.com/yuyumta/SA_LinePracticeUtil/releases/download/5.0/SA_practice_utility.zip) the asi file.
+3. Extract the contents of the zip to the game's root directory, or the scripts folder.
+4. Examine sapu.ini for any potential configuration changes you would like to make (changing the keybinds, or disabling certain functionality.)
+5. It should work now. 
+
+# How to use/what it does
+Features:
+1. Teleporting a vehicle to your chosen place, whilst saving velocity, heading, and a multitude of other parameters. By default, this is bound to tab (to save the current state), and X (to revert to a saved state). This only works in vehicles, and not on foot. Although, if the vehicle you were in last is still present, and you press the load key, you will teleported inside of it. And if you press the load key another time, you'll be set to a saved state, if one exists, regardless of whether youve changed vehicles since then, or not. In addition to the vehicle itself, loading a state will also restore some other attributes such as: health, vehicle skill, time, and weather.
+2. Quicksaves and quickloads. By default, this is bound to F5 (save) and F9 (load). You may only save when not in a vehicle, and in addition, saving while on missions will almost certainly result in a corrupt save. Quicksaves have their own save file named "sapu-quicksave.b" in the "GTA San Andreas User Files" directory. It's an ordinary save file, so you're free to rename it as one of the normal save files, and use it as such. You may also do the reverse of this, and rename a normal save file to  "sapu-quicksave.b", and it will be loaded, provided the save file isn't defective.
+3. Persistent vehicle spawns. By default, this is bound to F6. Upon activation, the current vehicle you're in will be permanently marked as a parked car at the specific location you were in once you save the game. At the moment, this feature only works with quicksaves, so be sure not to save at a save marker if you intend to make use of this feature. You should also take care when creating persistent vehicles, as there is no way to undo a mistake. In addition to this, overlapping vehicles do not spawn inside of one another, instead, the one that was made before will be spawned, and the rest will remain hidden. This may also cause problems if you intend to spawn several vehicles close to one another, as the detection for whether a vehicle is too close or not is not dependent on collision, but rather, a small area, making it not too precise
+4. Timer and a checkpoint. If you press F12 (by default) you are able to enter timer mode. You should see a timer pop up on the top left of the screen. In timer mode, you can press Z (by default) to place a checkpoint. If a checkpoint has been placed, the next time you load a state (X by default), the timer will start, and keep going until you hit the checkpoint you had made. The timer will reset once you reload a state. This feature is intended to be a more convenient way to time routes (I've found timing screen recordings to be a bit tedious, same with using the in-game clock, which is inaccurate on top of that.)
+
+There is also a config file. The plugin does work without the included .ini file, however, you would most likely want to adjust keybinds, or perhaps disable some of the functionality. The keybinds use hex notation. I've included a couple of links at the top of the config file. You can look up your desired hex codes on either of those sites.
