@@ -3,7 +3,7 @@ An asi plugin for San Andreas that helps practice driving lines and such. Giving
 
 # Install
 1. Install an asi loader.
-2. 1. [Download](https://github.com/yuyumta/SA_LinePracticeUtil/releases/download/5.0/SA_practice_utility.zip) the asi file.
+2. [Download](https://github.com/yuyumta/SA_LinePracticeUtil/releases/download/5.0/SA_practice_utility.zip) the asi file.
 3. Extract the contents of the zip to the game's root directory, or the scripts folder.
 4. Examine sapu.ini for any potential configuration changes you would like to make (changing the keybinds, or disabling certain functionality.)
 5. It should work now. 
