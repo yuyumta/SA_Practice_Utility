@@ -18,6 +18,7 @@
 #include "CFont.h"
 #include "CCheckpoints.h"
 #include "CAudioEngine.h"
+#include "CPickups.h"
 
 
 using namespace plugin;
@@ -101,22 +102,21 @@ void SavePatchThing(const char* filename, uint16_t compare_id)
 class sapu {
 public:
     sapu() {
-		INIReader reader("SAPU-config.ini");
-
-		static int setkey = reader.GetInteger("binds", "setkey", 0x09);
-		static int loadkey = reader.GetInteger("binds", "loadkey", 0x11);
-		static int quicksavekey = reader.GetInteger("binds", "quicksavekey", 0x11);
-		static int quickloadkey = reader.GetInteger("binds", "quickloadkey", 0x11);
-		static int vehiclegenkey = reader.GetInteger("binds", "vehiclegenkey", 0x11);
+		INIReader reader("sapu-config.ini");
+		static int setkey = reader.GetInteger("binds", "setkey", 0xA4);
+		static int loadkey = reader.GetInteger("binds", "loadkey", 0x58);
+		static int quicksavekey = reader.GetInteger("binds", "quicksavekey", 0x74);
+		static int quickloadkey = reader.GetInteger("binds", "quickloadkey", 0x78);
+		static int vehiclegenkey = reader.GetInteger("binds", "vehiclegenkey", 0x75);
 		static int feetkey = reader.GetInteger("binds", "onfoottogglekey", 0x91);
 		static int checkpointtogglekey = reader.GetInteger("binds", "checkpointtogglekey", 0x7B);
 		static int checkpointplacekey = reader.GetInteger("binds", "checkpointplacekey", 0x5A);
 
-		static bool healplayer = reader.GetInteger("options", "set_player_health", 0);
-		static bool healvehicle = reader.GetInteger("options", "set_vehicle_health", 0);
-		static bool undoskill = reader.GetInteger("options", "set_vehicle_skill", 0);
-		static bool undotime = reader.GetInteger("options", "set_time", 0);
-		static bool quicksave = reader.GetInteger("options", "enable_quicksave", 0);
+		static bool healplayer = reader.GetInteger("options", "set_player_health", 1);
+		static bool healvehicle = reader.GetInteger("options", "set_vehicle_health", 1);
+		static bool undoskill = reader.GetInteger("options", "set_vehicle_skill", 1);
+		static bool undotime = reader.GetInteger("options", "set_time", 1);
+		static bool quicksave = reader.GetInteger("options", "enable_quicksave", 1);
 
 		// vehicle data
 		static CVector vehicle_u, vehicle_r, vehicle_position, vehicle_speed;
@@ -220,6 +220,24 @@ public:
 				}
 			}
 
+
+			if (!CTimer::m_UserPause && KeyPressed(loadkey) && !playerVehicle) {
+				// so you can tp back into a car from on foot
+				for (CVehicle* vehicle : CPools::ms_pVehiclePool)
+				{
+					if (vehicle == player->m_pVehicle) {
+						player->m_nPedFlags.CantBeKnockedOffBike = 1; // water bike
+						Command<eScriptCommands::COMMAND_WARP_CHAR_INTO_CAR>(player, vehicle);
+						if (!vehicle_u.x) {
+							player->m_nPedFlags.CantBeKnockedOffBike = 0;
+						}
+
+
+					}
+
+				}
+			}
+
 			// restore pos/vehicle/stuff
 			if (!CTimer::m_UserPause && KeyPressed(loadkey) && CTimer::m_snTimeInMilliseconds - m_nLastSpawnedTime > 500) {
 				m_nLastSpawnedTime = CTimer::m_snTimeInMilliseconds;
@@ -304,24 +322,14 @@ public:
 					}
 
 					Command<eScriptCommands::COMMAND_RESTORE_CAMERA_JUMPCUT>();
-	
 
 
-				}
-				else if (!feet)
-				{
-					// so you can tp back into a car from on foot
-					for (CVehicle* vehicle : CPools::ms_pVehiclePool)
-					{
-						if (vehicle == player->m_pVehicle) {
-							player->m_nPedFlags.CantBeKnockedOffBike = 1; // water bike
-							Command<eScriptCommands::COMMAND_WARP_CHAR_INTO_CAR>(player, vehicle);
-
-						}
-					}
-				}
+								}
 
 			}
+
+
+
 
 			// save position, speed, heading, etc
 			if (!CTimer::m_UserPause && KeyPressed(setkey) && CTimer::m_snTimeInMilliseconds - m_nLastSpawnedTime > 500) {
