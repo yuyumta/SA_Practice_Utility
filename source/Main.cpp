@@ -175,9 +175,9 @@ public:
 			// while timer is running
 			if (timing)
 			{
-				timer = timer + CTimer::m_snTimeInMilliseconds/CTimer::game_FPS*1.9;
-				if (cp->m_vecPosition.x)
+				if (cp)
 				{
+					timer = timer + CTimer::m_snTimeInMilliseconds / CTimer::game_FPS * 1.9;
 					if (Command<eScriptCommands::COMMAND_LOCATE_CHAR_ANY_MEANS_2D>(player, cp->m_vecPosition.x, cp->m_vecPosition.y, 4.0, 4.0, true)) {
 						timing = false;
 						Command<eScriptCommands::COMMAND_ADD_ONE_OFF_SOUND>(player->m_matrix->pos.x, player->m_matrix->pos.y, player->m_matrix->pos.z, 1056);
@@ -283,7 +283,7 @@ public:
 						CWeather::ForceWeather(weather);
 					}
 
-					if (checkpoint_mode && cp->m_bIsUsed)
+					if (checkpoint_mode)
 					{
 						timing = true;
 						timer = 0.0;
@@ -324,7 +324,7 @@ public:
 					Command<eScriptCommands::COMMAND_RESTORE_CAMERA_JUMPCUT>();
 
 
-								}
+				}
 
 			}
 
